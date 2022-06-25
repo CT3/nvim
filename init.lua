@@ -9,7 +9,7 @@ require('settings.keymap')
 -- Package settings
 require('plugins/treesitter')
 require('plugins/lspconfig')
---require('plugins/lspsaga')
+require('plugins/lspsaga')
 require('plugins/telescope')
 require('plugins/lualine')
 require('plugins/compe')

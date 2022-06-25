@@ -1,5 +1,5 @@
   -- Setup nvim-cmp.
-  local cmp = require'cmp'
+  --[[ local cmp = require'cmp'
 
   cmp.setup({
     snippet = {
@@ -65,4 +65,4 @@
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
     capabilities = capabilities
-  }
+  } ]]
