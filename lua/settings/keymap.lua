@@ -32,7 +32,7 @@ map('n', '<leader>fb', ':Telescope file_browser<CR>', {noremap = true})
 map("n", "n", "nzzzv", {noremap = true})
 map("n", "N", "Nzzzv", {noremap = true})
 map("n", "J", "mzJ'z", {noremap = true})
-map("n","<C-s>", "<cmd>lua vim.lsp.buf.formatting()<CR>:w <CR>", {noremap = true}) -- ctrl + s to save file
+map("n","<C-s>", "<cmd>lua vim.lsp.buf.formatting()<CR>:w <CR>", {noremap = true, silent = true}) -- ctrl + s to save file
 
 map("n", "<leader><up>", ":m .-2<CR>==", {noremap = true})
 map("n", "<leader><down>", ":m .+1<CR>==", {noremap = true})
@@ -51,12 +51,7 @@ map("n", "[b", ":BufferLineCyclePrev<CR>", {noremap = true})
 map('n', '<leader>f', ':Format <CR>', {noremap = true})
 
 -- NvimTree
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>fb",
-  ":Telescope file_browser<CR>",
-  { noremap = true }
-)
+vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true })
 
 -- Trouble
 map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
@@ -67,4 +62,5 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = tr
 map("n", "gR", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
 
 
-
+map("n","<Esc>", ":noh<CR><esc>", {silent = true, noremap = true})
+map("v", "p", '"_dp', { noremap = true })
