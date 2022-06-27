@@ -14,9 +14,9 @@ require('plugins/telescope')
 require('plugins/lualine')
 require('plugins/compe')
 require('plugins/neoscroll')
-require('plugins/ultisnips')
-require('plugins/formatter')
-require('plugins/commenter')
-
+--require('plugins/formatter')
+require('plugins/bufferline')
+require('plugins/autocomplete')
+require('plugins/comment')
 
 

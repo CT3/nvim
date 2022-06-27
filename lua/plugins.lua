@@ -8,12 +8,13 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- vimscript
-  use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
 
 
--- Buffer Line
+  --ALL the lines
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+  use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+
 
   -- LSP and related
   use 'nvim-treesitter/nvim-treesitter'
@@ -21,11 +22,12 @@ return require('packer').startup(function()
   use 'folke/trouble.nvim'
   use 'onsails/lspkind.nvim'
   use { "williamboman/nvim-lsp-installer", "neovim/nvim-lspconfig", }
+
   -- Code formatting
-  use 'mhartington/formatter.nvim'
+
+
 
   -- Autocomplete
-  -- use 'hrsh7th/nvim-compe'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -42,15 +44,19 @@ return require('packer').startup(function()
 
   -- Utilities
   use 'karb94/neoscroll.nvim'
+
+
+  -- telescope
   use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
   use { "nvim-telescope/telescope-file-browser.nvim" }
+
+  -- Comments and Todo 
   use { "folke/todo-comments.nvim" ,
       requires = "nvim-lua/plenary.nvim",
       config = function()
          require("todo-comments").setup {}
       end,
    }
-  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
-  use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+  use { 'numToStr/Comment.nvim' }
 
 end)

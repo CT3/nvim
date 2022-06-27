@@ -4,6 +4,7 @@ require('formatter').setup({
   filetype = {
     python = {},
     lua = {},
+
     }
 })
 

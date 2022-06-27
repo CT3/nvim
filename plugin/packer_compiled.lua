@@ -70,7 +70,6 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
     path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
@@ -112,11 +111,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
-  },
-  ["formatter.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\formatter.nvim",
-    url = "https://github.com/mhartington/formatter.nvim"
   },
   ["gruvbox-flat.nvim"] = {
     loaded = true,
@@ -208,11 +202,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   }
 }
 
@@ -221,10 +210,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
