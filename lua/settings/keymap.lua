@@ -27,6 +27,8 @@ map('n', '<leader>fw', ':Telescope live_grep<CR>', {noremap = true})
 map('n', '<leader>fb', ':Telescope buffers<CR>', {noremap = true})
 map('n', '<leader>fh', ':Telescope help_tags<CR>', {noremap = true})
 map('n', '<leader>fb', ':Telescope file_browser<CR>', {noremap = true})
+map('n', '<leader>fr', ':Telescope neoclip<CR>', {noremap = true})
+map('n', '<leader>fp', ':Telescope projects<CR>', {noremap = true})
 
 -- ultilties
 map("n", "n", "nzzzv", {noremap = true})
