@@ -117,6 +117,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox-flat.nvim",
     url = "https://github.com/eddyekofo94/gruvbox-flat.nvim"
   },
+  ["lightspeed.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lightspeed.nvim",
+    url = "https://github.com/ggandor/lightspeed.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Mantas Jurkuvenas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspkind.nvim",
