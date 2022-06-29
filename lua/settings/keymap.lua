@@ -34,7 +34,7 @@ map('n', '<leader>fp', ':Telescope projects<CR>', {noremap = true})
 map("n", "n", "nzzzv", {noremap = true})
 map("n", "N", "Nzzzv", {noremap = true})
 map("n", "J", "mzJ'z", {noremap = true})
-map("n","<C-s>", "<cmd>lua vim.lsp.buf.formatting()<CR>:w <CR>", {noremap = true, silent = true}) -- ctrl + s to save file
+map("n","<C-s>", ":Neoformat <CR>:w <CR>", {noremap = true, silent = true}) -- ctrl + s to save file
 
 map("n", "<leader><up>", ":m .-2<CR>==", {noremap = true})
 map("n", "<leader><down>", ":m .+1<CR>==", {noremap = true})
