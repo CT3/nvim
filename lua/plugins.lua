@@ -57,7 +57,12 @@ return require("packer").startup(function()
 			require("neoclip").setup({})
 		end,
 	})
-
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	})
 	-- Comments and Todo
 	use({
 		"folke/todo-comments.nvim",
