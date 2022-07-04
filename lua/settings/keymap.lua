@@ -59,4 +59,18 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = t
 map("n", "<leader>gr", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
 map("n", "<Esc>", ":noh<CR><esc>", { silent = true, noremap = true })
-map("v", "p", '"_dp', { noremap = true })
+map("v", "p", '"_dP', { noremap = true })
+
+-- Terminal
+
+function _G.set_terminal_keymaps()
+	local opts = { noremap = true }
+	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+end
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { silent = true, noremap = true })

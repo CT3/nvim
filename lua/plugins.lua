@@ -30,8 +30,15 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-cmdline")
 	use({ "tzachar/cmp-tabnine", after = "nvim-cmp", run = "powershell ./install.ps1", requires = "hrsh7th/nvim-cmp" })
 
+	-- terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v1.*",
+		config = function()
+			require("toggleterm").setup({ direction = "float" })
+		end,
+	})
 	-- snippets
-
 	use("L3MON4D3/LuaSnip")
 
 	-- Colourscheme
