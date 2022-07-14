@@ -18,3 +18,4 @@ require("plugins/neoscroll")
 require("plugins/bufferline")
 require("plugins/autocomplete")
 require("plugins/comment")
+

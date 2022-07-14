@@ -60,7 +60,10 @@ map("n", "<leader>gr", "<cmd>Trouble lsp_references<cr>", { silent = true, norem
 
 map("n", "<Esc>", ":noh<CR><esc>", { silent = true, noremap = true })
 map("v", "p", '"_dP', { noremap = true })
+-- harpoon son
 
+map("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, noremap = true })
+map("n", "<leader>fm", ":Telescope harpoon marks<cr>", { silent = true, noremap = true })
 -- Terminal
 
 function _G.set_terminal_keymaps()
