@@ -10,8 +10,15 @@ return require("packer").startup({
 		use("tpope/vim-repeat")
 
 		--ALL the lines
-		use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
-		use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
+		-- use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
+		use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
+		use({
+			"kdheepak/tabline.nvim",
+			config = function()
+				require("tabline").setup({ enable = false })
+			end,
+			requires = { " nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
+		})
 
 		-- LSP and related
 		use("nvim-treesitter/nvim-treesitter")

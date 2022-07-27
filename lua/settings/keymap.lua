@@ -26,7 +26,7 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true })
 map("n", "<leader>fw", ":Telescope live_grep<CR>", { noremap = true })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true })
-map("n", "<leader>fb", ":Telescope file_browser<CR>", { noremap = true })
+map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
 map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
 map("n", "<leader>fp", ":Telescope projects<CR>", { noremap = true })
 
@@ -63,7 +63,11 @@ map("v", "p", '"_dP', { noremap = true })
 -- harpoon son
 
 map("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, noremap = true })
-map("n", "<leader>fm", ":Telescope harpoon marks<cr>", { silent = true, noremap = true })
+map("n", "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { silent = true, noremap = true })
+map("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { silent = true, noremap = true })
+map("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent = true, noremap = true })
+map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, noremap = true })
+
 -- Terminal
 
 function _G.set_terminal_keymaps()

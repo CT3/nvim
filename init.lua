@@ -15,7 +15,6 @@ require("plugins/telescope")
 require("plugins/lualine")
 require("plugins/compe")
 require("plugins/neoscroll")
-require("plugins/bufferline")
+--require("plugins/bufferline")
 require("plugins/autocomplete")
 require("plugins/comment")
-
