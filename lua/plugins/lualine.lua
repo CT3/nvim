@@ -1,3 +1,17 @@
+vim.o.shortmess = vim.o.shortmess .. "S"
+
+local function search_count()
+	if vim.api.nvim_get_vvar("hlsearch") == 1 then
+		local res = vim.fn.searchcount({ maxcount = 100, timeout = 500 })
+
+		if res.total > 0 then
+			return string.format("%d/%d", res.current, res.total)
+		end
+	end
+
+	return ""
+end
+
 -- Status line
 require("lualine").setup({
 	options = {
@@ -22,7 +36,7 @@ require("lualine").setup({
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { "filename" },
 		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
+		lualine_y = { "progress", { search_count, type = "lua_expr" } },
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
