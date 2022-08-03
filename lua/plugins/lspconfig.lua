@@ -66,7 +66,16 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
 ---
 -- LSP servers
 ---
-
+require("nvim-lsp-installer").setup({
+    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
 -- lspconfig.html.setup({})
 lspconfig.sumneko_lua.setup({})
 lspconfig.clangd.setup({})
