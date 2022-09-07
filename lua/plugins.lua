@@ -19,7 +19,12 @@ return require("packer").startup({
 			end,
 			requires = { " nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 		})
-
+		use({
+			"andrewferrier/debugprint.nvim",
+			config = function()
+				require("debugprint").setup()
+			end,
+		})
 		-- LSP and related
 		use("nvim-treesitter/nvim-treesitter")
 		use("glepnir/lspsaga.nvim")
@@ -29,6 +34,7 @@ return require("packer").startup({
 
 		-- Code formatting
 		use("sbdchd/neoformat")
+		use("rcarriga/nvim-notify")
 
 		-- Autocomplete
 		use("hrsh7th/nvim-cmp")
@@ -42,7 +48,15 @@ return require("packer").startup({
 			run = "powershell ./install.ps1",
 			requires = "hrsh7th/nvim-cmp",
 		})
-
+		use({
+			"danymat/neogen",
+			config = function()
+				require("neogen").setup({})
+			end,
+			requires = "nvim-treesitter/nvim-treesitter",
+			-- Uncomment next line if you want to follow only stable versions
+			-- tag = "*"
+		})
 		-- terminal
 		use({
 			"akinsho/toggleterm.nvim",

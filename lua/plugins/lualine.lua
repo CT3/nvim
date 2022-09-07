@@ -12,7 +12,6 @@ local function search_count()
 	return ""
 end
 
-
 -- Status line
 require("lualine").setup({
 	options = {
@@ -35,8 +34,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = {{ 'filename', file_status = true,  path = 3
-    }},
+		lualine_c = { { "filename", file_status = true, path = 3 } },
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress", { search_count, type = "lua_expr" } },
 		lualine_z = { "location" },

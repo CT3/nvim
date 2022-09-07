@@ -34,7 +34,7 @@ opt.signcolumn = "yes"
 opt.colorcolumn = "120"
 opt.foldmethod = "expr"
 opt.updatetime = 50
-
+vim.notify = require("notify")
 --opt.foldexpr='nvim_treesitter#foldexpr()'
 vim.opt.termguicolors = true
 vim.o.clipboard = "unnamed"

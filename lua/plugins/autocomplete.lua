@@ -18,11 +18,11 @@ end
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local source_mapping = {
-	cmp_tabnine = "[T9]",
-	buffer = "[Buf]",
-	nvim_lsp = "[LSP]",
-	luasnip = "[Lua]",
-	path = "[Path]",
+	cmp_tabnine = "",
+	buffer = "﬘",
+	nvim_lsp = "",
+	luasnip = "",
+	path = "",
 }
 local lspkind = require("lspkind")
 local select_opts = { behavior = cmp.SelectBehavior.Select }
