@@ -8,6 +8,7 @@ return require("packer").startup({
 		use("lewis6991/impatient.nvim")
 		-- vimscript
 		use("tpope/vim-repeat")
+		use("kyazdani42/nvim-web-devicons")
 
 		--ALL the lines
 		-- use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
@@ -47,15 +48,6 @@ return require("packer").startup({
 			after = "nvim-cmp",
 			run = "powershell ./install.ps1",
 			requires = "hrsh7th/nvim-cmp",
-		})
-		use({
-			"danymat/neogen",
-			config = function()
-				require("neogen").setup({})
-			end,
-			requires = "nvim-treesitter/nvim-treesitter",
-			-- Uncomment next line if you want to follow only stable versions
-			-- tag = "*"
 		})
 		-- terminal
 		use({

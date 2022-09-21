@@ -7,6 +7,9 @@ local map = vim.api.nvim_set_keymap
 -- LSP
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
+-- Debuging things
+map("n", "<F5>", ":!make flash_debug<CR><CR>", { noremap = true, silent = true })
+
 -- LSP saga
 map("n", "<leader>cf", ":Lspsaga lsp_finder<CR>", { silent = true })
 map("n", "<leader>ca", ":Lspsaga code_action<CR>", { silent = true })
@@ -35,7 +38,6 @@ map("n", "n", "nzzzv", { noremap = true })
 map("n", "N", "Nzzzv", { noremap = true })
 map("n", "J", "mzJ'z", { noremap = true })
 map("n", "<C-s>", ":Neoformat <CR>:w <CR>", { noremap = true, silent = true }) -- ctrl + s to save file
-
 map("n", "<leader><up>", ":m .-2<CR>==", { noremap = true })
 map("n", "<leader><down>", ":m .+1<CR>==", { noremap = true })
 map("v", "<leader><down>", ":m '>+1<CR>gv=gv", { noremap = true })
@@ -43,9 +45,8 @@ map("v", "<leader><up>", ":m '<-2<CR>gv=gv", { noremap = true })
 map("n", "<leader>gh", ":ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
 
 -- Bufferline
-
-map("n", "]b", ":BufferLineCycleNext<CR>", { noremap = true })
-map("n", "[b", ":BufferLineCyclePrev<CR>", { noremap = true })
+map("n", "]b", ":TablineBufferNext<CR>", { noremap = true })
+map("n", "[b", ":TablineBufferPrevious<CR>", { noremap = true })
 map("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
 
 -- Formatter
@@ -57,11 +58,10 @@ map("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", { silent = t
 map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
 map("n", "<leader>gr", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
-
 map("n", "<Esc>", ":noh<CR><esc>", { silent = true, noremap = true })
 map("v", "p", '"_dP', { noremap = true })
--- harpoon son
 
+-- harpoon son
 map("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, noremap = true })
 map("n", "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { silent = true, noremap = true })
 map("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { silent = true, noremap = true })
