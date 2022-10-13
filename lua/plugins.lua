@@ -5,7 +5,7 @@ return require("packer").startup({
 	function()
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
-		use("lewis6991/impatient.nvim")
+		--use("lewis6991/impatient.nvim")
 		-- vimscript
 		use("tpope/vim-repeat")
 		use("kyazdani42/nvim-web-devicons")

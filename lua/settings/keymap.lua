@@ -8,7 +8,7 @@ local map = vim.api.nvim_set_keymap
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 -- Debuging things
-map("n", "<F5>", ":!make flash_debug<CR><CR>", { noremap = true, silent = true })
+map("n", "<F5>", ":Debugit<CR>", { noremap = true, silent = true })
 
 -- LSP saga
 map("n", "<leader>cf", ":Lspsaga lsp_finder<CR>", { silent = true })
