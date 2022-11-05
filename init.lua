@@ -20,3 +20,5 @@ require("plugins/autocomplete")
 require("plugins/comment")
 
 lua = require("compile_on_save")
+
+require("leap").add_default_mappings()

@@ -36,7 +36,7 @@ return require("packer").startup({
 		-- Code formatting
 		use("sbdchd/neoformat")
 		use("rcarriga/nvim-notify")
-
+		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 		-- Autocomplete
 		use("hrsh7th/nvim-cmp")
 		use("hrsh7th/cmp-nvim-lsp")
@@ -54,7 +54,7 @@ return require("packer").startup({
 			"akinsho/toggleterm.nvim",
 			tag = "v1.*",
 			config = function()
-				require("toggleterm").setup({ direction = "float" })
+				require("toggleterm").setup({ direction = "Vertical" })
 			end,
 		})
 		-- snippets
@@ -65,7 +65,7 @@ return require("packer").startup({
 
 		-- Utilities
 		use("karb94/neoscroll.nvim")
-		use("ggandor/lightspeed.nvim")
+		use("ggandor/leap.nvim")
 
 		-- telescope
 		--
@@ -83,12 +83,6 @@ return require("packer").startup({
 			requires = "nvim-telescope/telescope.nvim",
 			config = function()
 				require("neoclip").setup({})
-			end,
-		})
-		use({
-			"goolord/alpha-nvim",
-			config = function()
-				require("alpha").setup(require("alpha.themes.dashboard").config)
 			end,
 		})
 		use({
