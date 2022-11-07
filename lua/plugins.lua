@@ -54,11 +54,13 @@ return require("packer").startup({
 			"akinsho/toggleterm.nvim",
 			tag = "v1.*",
 			config = function()
-				require("toggleterm").setup({ direction = "Vertical" })
+				require("toggleterm").setup({ direction = "float", shell = "pwsh" })
 			end,
 		})
-		-- snippets
+		-- snippets"
 		use("L3MON4D3/LuaSnip")
+		use("saadparwaiz1/cmp_luasnip")
+		use("rafamadriz/friendly-snippets")
 
 		-- Colourscheme
 		use("eddyekofo94/gruvbox-flat.nvim")

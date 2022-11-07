@@ -16,21 +16,24 @@ local function border(hl_name)
 	}
 end
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 local source_mapping = {
-	cmp_tabnine = "",
-	buffer = "﬘",
-	nvim_lsp = "",
 	luasnip = "",
+	cmp_tabnine = "",
+	nvim_lsp = "",
+	buffer = "﬘",
 	path = "",
 }
 local lspkind = require("lspkind")
 local select_opts = { behavior = cmp.SelectBehavior.Select }
-
+local luasnip = require("luasnip")
 cmp.setup({
 	snippet = {
+		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	sources = {
@@ -38,6 +41,7 @@ cmp.setup({
 		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp", keyword_length = 1 },
 		{ name = "buffer", keyword_length = 3 },
+		-- { name = "vsnip" }, -- For vsnip users.
 		{ name = "luasnip", keyword_length = 2 },
 	},
 	window = {
@@ -67,16 +71,13 @@ cmp.setup({
 		["<Up>"] = cmp.mapping.select_prev_item(select_opts),
 		["<Down>"] = cmp.mapping.select_next_item(select_opts),
 
-		["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-		["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 
 		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-		["<C-d>"] = cmp.mapping(function(fallback)
+		["<C-n>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(1) then
 				luasnip.jump(1)
 			else
@@ -84,7 +85,7 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 
-		["<C-b>"] = cmp.mapping(function(fallback)
+		["<C-p>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
