@@ -71,3 +71,10 @@ map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent
 -- Terminal
 map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { silent = true, noremap = true })
 map("t", "<leader>tt", "<cmd>ToggleTerm<cr>", { silent = true, noremap = true })
+
+local Terminal = require("toggleterm.terminal").Terminal
+local gitui = Terminal:new({ cmd = "gitui", hidden = true, direction = "float", shell = "pwsh" })
+function _gitui_toggle()
+	gitui:toggle()
+end
+map("n", "<leader>tg", "<cmd>lua _gitui_toggle()<CR>", { noremap = true, silent = true })

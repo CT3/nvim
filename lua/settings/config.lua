@@ -37,7 +37,7 @@ opt.updatetime = 50
 vim.notify = require("notify")
 --opt.foldexpr='nvim_treesitter#foldexpr()'
 vim.opt.termguicolors = true
-vim.o.clipboard = "unnamed"
+vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 
 vim.api.nvim_exec(
