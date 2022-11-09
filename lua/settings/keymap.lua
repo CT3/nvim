@@ -78,3 +78,9 @@ function _gitui_toggle()
 	gitui:toggle()
 end
 map("n", "<leader>tg", "<cmd>lua _gitui_toggle()<CR>", { noremap = true, silent = true })
+
+local glow = Terminal:new({ cmd = "glow", hidden = true, direction = "tab", shell = "pwsh" })
+function _glow_toggle()
+	glow:toggle()
+end
+map("n", "<leader>tm", "<cmd>lua _glow_toggle()<CR>", { noremap = true, silent = true })
