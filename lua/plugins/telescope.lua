@@ -8,7 +8,6 @@ require("telescope").setup({
 			"--line-number",
 			"--column",
 			"--smart-case",
-			".gitignore",
 		},
 		prompt_prefix = "> ",
 		selection_caret = "> ",

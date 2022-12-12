@@ -24,6 +24,11 @@ map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>zz", { silent = true })
 map("n", "<leader>rn", ":Lspsaga rename<CR>", { silent = true })
 map("n", "<leader>pd", ":Lspsaga preview_definition<CR>", { silent = true })
 
+-- Spell check
+
+map("n", "<F12>", ":set spell!<CR>", { silent = true })
+map("n", "<leader>sp", "w[s1z=", { silent = true })
+
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true })
 map("n", "<leader>fw", ":Telescope live_grep<CR>", { noremap = true })
