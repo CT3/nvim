@@ -40,12 +40,9 @@ vim.opt.termguicolors = true
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=200 }
-  augroup end
-]],
-	false
+vim.api.nvim_create_augroup("MYAUCMDS", { clear = true })
+vim.api.nvim_create_autocmd(
+	"TextYankPost",
+	{ group = "MYAUCMDS", pattern = "*", command = [[silent! lua require'vim.highlight'.on_yank({timeout = 100})]] }
 )
+-- vim.api.nvim_create_autocmd("BufWritePre", { group = "MYAUCMDS", pattern = "*", command = [[:%s/\s\+$//e]] }) -- remove trailing spaces
