@@ -1,8 +1,7 @@
 -- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
-
+vim.cmd.packadd("packer.nvim")
 return require("packer").startup({
-	function()
+	function(use)
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
 		--use("lewis6991/impatient.nvim")
@@ -20,12 +19,6 @@ return require("packer").startup({
 			end,
 			requires = { " nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 		})
-		use({
-			"andrewferrier/debugprint.nvim",
-			config = function()
-				require("debugprint").setup()
-			end,
-		})
 		-- LSP and related
 		use("nvim-treesitter/nvim-treesitter")
 		use("glepnir/lspsaga.nvim")
@@ -36,7 +29,6 @@ return require("packer").startup({
 		-- Code formatting
 		use("sbdchd/neoformat")
 		use("rcarriga/nvim-notify")
-		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 		-- Autocomplete
 		use("hrsh7th/nvim-cmp")
 		use("hrsh7th/cmp-nvim-lsp")

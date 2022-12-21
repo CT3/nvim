@@ -15,8 +15,6 @@ map("n", "<leader>cf", ":Lspsaga lsp_finder<CR>", { silent = true })
 map("n", "<leader>ca", ":Lspsaga code_action<CR>", { silent = true })
 map("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", { silent = true })
 map("n", "K", ":Lspsaga hover_doc<CR>", { silent = true })
-map("n", "<leader>b", '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', { silent = true })
-map("n", "<leader>f", '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', { silent = true })
 map("n", "<leader>gs", ":Lspsaga signature_help<CR>", { silent = true })
 map("n", "<leader>d", ":Lspsaga show_line_diagnostics<CR>", { noremap = true, silent = true })
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>zz", { silent = true })
@@ -37,8 +35,11 @@ map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true })
 map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
 map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
 map("n", "<leader>fp", ":Telescope projects<CR>", { noremap = true })
+map("n", "<leader>ft", ":TodoTelescope keywords=TODO,FIX<CR>", { noremap = true })
 
 -- ultilties
+map("n", "<C-d>", "<C-d>zz", { noremap = true })
+map("n", "<C-u>", "<C-u>zz", { noremap = true })
 map("n", "n", "nzzzv", { noremap = true })
 map("n", "N", "Nzzzv", { noremap = true })
 map("n", "J", "mzJ'z", { noremap = true })
@@ -58,11 +59,13 @@ map("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
 
 -- Trouble
 map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-map("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
-map("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", { silent = true, noremap = true })
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true })
 map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
 map("n", "<leader>gr", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+
+--utilities
 map("n", "<Esc>", ":noh<CR><esc>", { silent = true, noremap = true })
 map("v", "p", '"_dP', { noremap = true })
 
