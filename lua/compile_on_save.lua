@@ -15,5 +15,5 @@ local attach_to_buffer = function(pattern, command)
 	})
 end
 -- vim.api.nvim_create_user_command("Autorunn", function()
-attach_to_buffer("*.c", { "make", "-j" })
+attach_to_buffer("*.c", { "west", "build" })
 -- end, {})
