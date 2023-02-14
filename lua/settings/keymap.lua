@@ -28,22 +28,24 @@ map("n", "<F12>", ":set spell!<CR>", { silent = true })
 map("n", "<leader>sp", "w[s1z=", { silent = true })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true })
-map("n", "<leader>fw", ":Telescope live_grep<CR>", { noremap = true })
-map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true })
-map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true })
 map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
 map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
 map("n", "<leader>fp", ":Telescope projects<CR>", { noremap = true })
-map("n", "<leader>ft", ":TodoTelescope keywords=TODO,FIX<CR>", { noremap = true })
 
+
+vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 -- ultilties
 map("n", "<C-d>", "<C-d>zz", { noremap = true })
 map("n", "<C-u>", "<C-u>zz", { noremap = true })
 map("n", "n", "nzzzv", { noremap = true })
 map("n", "N", "Nzzzv", { noremap = true })
 map("n", "J", "mzJ'z", { noremap = true })
-map("n", "<C-s>", ":Neoformat <CR>:w <CR>", { noremap = true, silent = true }) -- ctrl + s to save file
+map("n", "<C-s>", ":Format <CR>:w <CR>", { noremap = true, silent = true }) -- ctrl + s to save file
 map("n", "<leader><up>", ":m .-2<CR>==", { noremap = true })
 map("n", "<leader><down>", ":m .+1<CR>==", { noremap = true })
 map("v", "<leader><down>", ":m '>+1<CR>gv=gv", { noremap = true })
@@ -80,15 +82,19 @@ map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent
 map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { silent = true, noremap = true })
 map("t", "<leader>tt", "<cmd>ToggleTerm<cr>", { silent = true, noremap = true })
 
+require("leap").add_default_mappings()
+
 local Terminal = require("toggleterm.terminal").Terminal
 local gitui = Terminal:new({ cmd = "gitui", hidden = true, direction = "float", shell = "pwsh" })
 function _gitui_toggle()
 	gitui:toggle()
 end
+
 map("n", "<leader>tg", "<cmd>lua _gitui_toggle()<CR>", { noremap = true, silent = true })
 
 local glow = Terminal:new({ cmd = "glow", hidden = true, direction = "tab", shell = "pwsh" })
 function _glow_toggle()
 	glow:toggle()
 end
+
 map("n", "<leader>tm", "<cmd>lua _glow_toggle()<CR>", { noremap = true, silent = true })
