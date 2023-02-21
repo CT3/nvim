@@ -31,6 +31,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	-- Git related plugins
 	'tpope/vim-fugitive',
+	"eddyekofo94/gruvbox-flat.nvim",
 	'tpope/vim-rhubarb',
 	'lewis6991/gitsigns.nvim',
 	'navarasu/onedark.nvim', -- Theme inspired by Atom

@@ -18,11 +18,13 @@ require("lazy").setup("plugins")
 require("settings.config")
 require("settings.keymap")
 -- Lua
-require('onedark').setup {
-  style = 'warmer'
-}
-require('onedark').load()
-
+-- require('onedark').setup {
+--   style = 'warmer'
+-- }
+-- require('onedark').load()
+-- Lua
+vim.cmd [[colorscheme gruvbox-flat]]
+vim.g.gruvbox_flat_style = "dark"
 
 require("toggleterm").setup({ direction = "float", shell = "pwsh" })
 -- [[ Basic Keymaps ]]
@@ -54,7 +56,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    theme = 'gruvbox-flat',
     component_separators = '|',
     section_separators = '',
   },
