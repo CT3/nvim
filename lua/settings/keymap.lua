@@ -8,7 +8,7 @@ local map = vim.api.nvim_set_keymap
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 -- Debuging things
-map("n", "<F5>", ":Debugit<CR>", { noremap = true, silent = true })
+map("n", "<F5>", ":!just debug<CR>", { noremap = true, silent = true })
 
 -- LSP saga
 map("n", "<leader>cf", ":Lspsaga lsp_finder<CR>", { silent = true })
@@ -28,9 +28,9 @@ map("n", "<F12>", ":set spell!<CR>", { silent = true })
 map("n", "<leader>sp", "w[s1z=", { silent = true })
 
 -- Telescope
-map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
-map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
-map("n", "<leader>fp", ":Telescope projects<CR>", { noremap = true })
+-- map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
+-- map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>fp", require('telescope').extensions.projects.projects, { noremap = true })
 
 
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[S]earch [F]iles' })

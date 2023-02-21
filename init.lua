@@ -14,9 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.maplocalleader = ' '
 require("lazy").setup("plugins")
-
 require("settings.config")
 require("settings.keymap")
+
+require("project_nvim").setup({})
+require('telescope').load_extension('projects')
 -- Lua
 -- require('onedark').setup {
 --   style = 'warmer'

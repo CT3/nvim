@@ -41,12 +41,20 @@ return {
 	'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
 	'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
 	'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-	("ggandor/leap.nvim"),
+	"ggandor/leap.nvim",
 	-- Fuzzy Finder (files, lsp, etc)
 	{ 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' },
 	},
 	"nvim-telescope/telescope-file-browser.nvim",
 
+	{ "tzachar/cmp-tabnine",
+		build = "powershell ./install.ps1",
+		dependencies = { "hrsh7th/nvim-cmp" },
+	},
+
+	{
+		"ahmedkhalf/project.nvim",
+	},
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
 
