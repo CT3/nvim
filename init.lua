@@ -13,36 +13,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' ' -- make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.maplocalleader = ' '
+
+
+
 require('lazy').setup 'plugins'
 require 'settings.config'
 require 'settings.keymap'
-
 require('project_nvim').setup {}
 require('telescope').load_extension 'projects'
--- Lua
--- require('onedark').setup {
---   style = 'warmer'
--- }
--- require('onedark').load()
--- Lua
+require('toggleterm').setup { direction = 'float', shell = 'pwsh' }
+
 vim.cmd [[colorscheme gruvbox-flat]]
 vim.g.gruvbox_flat_style = 'dark'
---
---tree sitter extras
-require('toggleterm').setup { direction = 'float', shell = 'pwsh' }
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -274,10 +256,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
 -- Turn on lsp status information
 require('fidget').setup()
-
 ---
 -- Autocomplete
 ---
@@ -318,10 +298,10 @@ cmp.setup {
   sources = {
     { name = 'path' },
     { name = 'cmp_tabnine' },
-    { name = 'nvim_lsp', keyword_length = 1 },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'nvim_lsp',   keyword_length = 1 },
+    { name = 'buffer',     keyword_length = 3 },
     -- { name = "vsnip" }, -- For vsnip users.
-    { name = 'luasnip', keyword_length = 2 },
+    { name = 'luasnip',    keyword_length = 2 },
   },
   window = {
     completion = {
@@ -389,3 +369,47 @@ cmp.setup {
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+require 'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        -- You can optionally set descriptions to the mappings (used in the desc parameter of
+        -- nvim_buf_set_keymap) which plugins like which-key display
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        -- You can also use captures from other query groups like `locals.scm`
+        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+      },
+      -- You can choose the select mode (default is charwise 'v')
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * method: eg 'v' or 'o'
+      -- and should return the mode ('v', 'V', or '<c-v>') or a table
+      -- mapping query_strings to modes.
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V',  -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      -- If you set this to `true` (default is `false`) then any textobject is
+      -- extended to include preceding or succeeding whitespace. Succeeding
+      -- whitespace has priority in order to act similarly to eg the built-in
+      -- `ap`.
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * selection_mode: eg 'v'
+      -- and should return true of false
+      include_surrounding_whitespace = true,
+    },
+  },
+}

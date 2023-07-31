@@ -26,6 +26,12 @@ map('n', '<leader>pd', ':Lspsaga preview_definition<CR>', { silent = true })
 map('n', '<F12>', ':set spell!<CR>', { silent = true })
 map('n', '<leader>sp', 'w[s1z=', { silent = true })
 
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+
 -- Telescope
 -- map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
 -- map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
@@ -50,9 +56,9 @@ map('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true })
 map('v', '<leader><up>', ":m '<-2<CR>gv=gv", { noremap = true })
 map('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
 
--- Bufferline
-map('n', ']b', ':TablineBufferNext<CR>', { noremap = true })
-map('n', '[b', ':TablineBufferPrevious<CR>', { noremap = true })
+-- Bufferlinke
+map('n', ']b', ':bnext<CR>', { noremap = true })
+map('n', '[b', ':bnext<CR>', { noremap = true })
 map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
 
 -- Formatter
@@ -82,24 +88,30 @@ map('t', '<leader>tt', '<cmd>ToggleTerm<cr>', { silent = true, noremap = true })
 
 require('leap').add_default_mappings()
 
+map('n', '<F5>', "<cmd>lua _Debu_toggle()<CR>", { noremap = true, silent = true })
+map('n', '<F4>', "<cmd>lua _Moni_toggle()<CR>", { noremap = true, silent = true })
+
+map('n', '<leader>tm', '<cmd>lua _Glow_toggle()<CR>', { noremap = true, silent = true })
+map('n', '<leader>tg', '<cmd>lua _Gitui_toggle()<CR>', { noremap = true, silent = true })
+
+
 local Terminal = require('toggleterm.terminal').Terminal
 local gitui = Terminal:new { cmd = 'gitui', hidden = true, direction = 'float', shell = 'pwsh' }
-function _gitui_toggle()
+function _Gitui_toggle()
   gitui:toggle()
 end
 
-map('n', '<leader>tg', '<cmd>lua _gitui_toggle()<CR>', { noremap = true, silent = true })
-
-local glow = Terminal:new { cmd = 'glow', hidden = true, direction = 'tab', shell = 'pwsh' }
-function _glow_toggle()
+local glow = Terminal:new { cmd = 'glow', hidden = true, direction = 'float', shell = 'pwsh' }
+function _Glow_toggle()
   glow:toggle()
 end
 
-map('n', '<leader>tm', '<cmd>lua _glow_toggle()<CR>', { noremap = true, silent = true })
-
-local debu = Terminal:new { cmd = 'just debug', hidden = true, direction = 'tab', shell = 'pwsh' }
-function _debu_toggle()
+local debu = Terminal:new { cmd = 'just debug', hidden = true, direction = 'horizontal', shell = 'pwsh' }
+function _Debu_toggle()
   debu:toggle()
 end
 
-map('n', '<F5>', "<cmd>lua _debu_toggle()<CR>", { noremap = true, silent = true })
+local moni = Terminal:new { cmd = 'just monitor', hidden = true, direction = 'horizontal', shell = 'pwsh' }
+function _Moni_toggle()
+  moni:toggle()
+end
