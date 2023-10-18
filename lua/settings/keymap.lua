@@ -8,23 +8,23 @@ local map = vim.api.nvim_set_keymap
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
 -- Debuging things
-
 -- LSP saga
-map('n', '<leader>cf', ':Lspsaga lsp_finder<CR>', { silent = true })
-map('n', '<leader>ca', ':Lspsaga code_action<CR>', { silent = true })
-map('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', { silent = true })
-map('n', 'K', ':Lspsaga hover_doc<CR>', { silent = true })
-map('n', '<leader>gs', ':Lspsaga signature_help<CR>', { silent = true })
-map('n', '<leader>d', ':Lspsaga show_line_diagnostics<CR>', { noremap = true, silent = true })
-map('n', ']d', ':Lspsaga diagnostic_jump_next<CR>zz', { silent = true })
-map('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>zz', { silent = true })
-map('n', '<leader>rn', ':Lspsaga rename<CR>', { silent = true })
-map('n', '<leader>pd', ':Lspsaga preview_definition<CR>', { silent = true })
-
+-- map('n', '<leader>cf', ':Lspsaga lsp_finder<CR>', { silent = true })
+-- map('n', '<leader>ca', ':Lspsaga code_action<CR>', { silent = true })
+-- map('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', { silent = true })
+-- map('n', 'K', ':Lspsaga hover_doc<CR>', { silent = true })
+-- map('n', '<leader>gs', ':Lspsaga signature_help<CR>', { silent = true })
+-- -- map('n', '<leader>d', ':Lspsaga show_line_diagnostics<CR>', { noremap = true, silent = true })
+-- map('n', ']d', ':Lspsaga diagnostic_jump_next<CR>zz', { silent = true })
+-- map('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>zz', { silent = true })
+-- map('n', '<leader>rn', ':Lspsaga rename<CR>', { silent = true })
+-- map('n', '<leader>pd', ':Lspsaga preview_definition<CR>', { silent = true })
+--
 -- Spell check
 
 map('n', '<F12>', ':set spell!<CR>', { silent = true })
 map('n', '<leader>sp', 'w[s1z=', { silent = true })
+
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
