@@ -1,7 +1,6 @@
 vim.g.mapleader = ' ' -- make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.maplocalleader = ' '
 
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -67,10 +66,6 @@ require('lualine').setup {
 require('Comment').setup()
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -260,7 +255,7 @@ require('fidget').setup()
 ---
 -- Autocomplete
 ---
-require('luasnip.loaders.from_vscode').lazy_load()
+-- require('luasnip.loaders.from_vscode').lazy_load()
 local function border(hl_name)
   return {
     { '╭', hl_name },
@@ -283,7 +278,7 @@ local source_mapping = {
 }
 local lspkind = require 'lspkind'
 local select_opts = { behavior = cmp.SelectBehavior.Select }
-local luasnip = require 'luasnip'
+-- local luasnip = require 'luasnip'
 cmp.setup {
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -296,11 +291,10 @@ cmp.setup {
   },
   sources = {
     { name = 'path' },
-    { name = 'cmp_tabnine' },
-    { name = 'nvim_lsp',   keyword_length = 1 },
-    { name = 'buffer',     keyword_length = 3 },
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'buffer',   keyword_length = 3 },
     -- { name = "vsnip" }, -- For vsnip users.
-    { name = 'luasnip',    keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 2 },
   },
   window = {
     completion = {

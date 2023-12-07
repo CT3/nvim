@@ -31,19 +31,21 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-
 -- Telescope
--- map("n", "<leader>fn", ":Telescope file_browser<CR>", { noremap = true })
--- map("n", "<leader>fr", ":Telescope neoclip<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>fp', require('telescope').extensions.projects.projects, { noremap = true })
-
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
--- ultilties
+
+
+-- for codeium
+vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+
+-- Misc
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
 map('n', 'n', 'nzzzv', { noremap = true })
@@ -60,8 +62,6 @@ map('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent
 map('n', ']b', ':bnext<CR>', { noremap = true })
 map('n', '[b', ':bnext<CR>', { noremap = true })
 map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
-
--- Formatter
 
 -- Trouble
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
