@@ -28,8 +28,8 @@ return {
   {
     'Exafunction/codeium.vim',
     event = 'BufEnter',
-      
 
+  },
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
