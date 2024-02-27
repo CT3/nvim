@@ -25,7 +25,6 @@ map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = t
 map('n', '<F12>', ':set spell!<CR>', { silent = true })
 map('n', '<leader>sp', 'w[s1z=', { silent = true })
 
-
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -40,10 +39,13 @@ vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
-
 -- for codeium
-vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+vim.keymap.set('i', '<C-y>', function()
+  return vim.fn['codeium#Accept']()
+end, { expr = true })
+vim.keymap.set('i', '<c-x>', function()
+  return vim.fn['codeium#Clear']()
+end, { expr = true })
 
 -- Misc
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
@@ -51,7 +53,7 @@ map('n', '<C-u>', '<C-u>zz', { noremap = true })
 map('n', 'n', 'nzzzv', { noremap = true })
 map('n', 'N', 'Nzzzv', { noremap = true })
 map('n', 'J', "mzJ'z", { noremap = true })
-map('n', '<C-s>', ':w <CR>:Format <CR>:w <CR>', { noremap = true, silent = true }) -- ctrl + s to save file
+map('n', '<leader>ww', ':w <CR>:Format <CR>:w <CR>', { noremap = true, silent = true }) -- ctrl + s to save file
 map('n', '<leader><up>', ':m .-2<CR>==', { noremap = true })
 map('n', '<leader><down>', ':m .+1<CR>==', { noremap = true })
 map('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true })
@@ -88,12 +90,11 @@ map('t', '<leader>tt', '<cmd>ToggleTerm<cr>', { silent = true, noremap = true })
 
 require('leap').add_default_mappings()
 
-map('n', '<F5>', "<cmd>lua _Debu_toggle()<CR>", { noremap = true, silent = true })
-map('n', '<F4>', "<cmd>lua _Moni_toggle()<CR>", { noremap = true, silent = true })
+map('n', '<F5>', '<cmd>lua _Debu_toggle()<CR>', { noremap = true, silent = true })
+map('n', '<F4>', '<cmd>lua _Moni_toggle()<CR>', { noremap = true, silent = true })
 
 map('n', '<leader>tm', '<cmd>lua _Glow_toggle()<CR>', { noremap = true, silent = true })
 map('n', '<leader>tg', '<cmd>lua _Gitui_toggle()<CR>', { noremap = true, silent = true })
-
 
 local Terminal = require('toggleterm.terminal').Terminal
 local gitui = Terminal:new { cmd = 'gitui', hidden = true, direction = 'float', shell = 'pwsh' }

@@ -7,7 +7,7 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', branch = "legacy" },
+      { 'j-hui/fidget.nvim', branch = 'legacy' },
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
       'onsails/lspkind.nvim',
@@ -25,11 +25,15 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter', 'nvim-treesitter/nvim-treesitter' },
   },
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
 
-  },
+  { 'mhartington/formatter.nvim' },
+
+  -- {
+  --   'Exafunction/codeium.vim',
+  --
+  --   event = 'BufEnter',
+  --
+  -- },
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -45,12 +49,12 @@ return {
   'eddyekofo94/gruvbox-flat.nvim',
   'lewis6991/gitsigns.nvim',
   'nvim-lualine/lualine.nvim', -- Fancier statusline
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
-  'numToStr/Comment.nvim',     -- "gc" to comment visual regions/lines
-  'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+  'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'ggandor/leap.nvim',
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim',       branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
   'nvim-telescope/telescope-file-browser.nvim',
   'ahmedkhalf/project.nvim',
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
