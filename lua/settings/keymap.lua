@@ -85,34 +85,7 @@ map('n', '<leader>2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent
 map('n', '<leader>3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, noremap = true })
 
 -- Terminal
-map('n', '<leader>tt', '<cmd>ToggleTerm<cr>', { silent = true, noremap = true })
-map('t', '<leader>tt', '<cmd>ToggleTerm<cr>', { silent = true, noremap = true })
-
 require('leap').add_default_mappings()
 
-map('n', '<F5>', '<cmd>lua _Debu_toggle()<CR>', { noremap = true, silent = true })
-map('n', '<F4>', '<cmd>lua _Moni_toggle()<CR>', { noremap = true, silent = true })
-
-map('n', '<leader>tm', '<cmd>lua _Glow_toggle()<CR>', { noremap = true, silent = true })
-map('n', '<leader>tg', '<cmd>lua _Gitui_toggle()<CR>', { noremap = true, silent = true })
-
-local Terminal = require('toggleterm.terminal').Terminal
-local gitui = Terminal:new { cmd = 'gitui', hidden = true, direction = 'float', shell = 'pwsh' }
-function _Gitui_toggle()
-  gitui:toggle()
-end
-
-local glow = Terminal:new { cmd = 'glow', hidden = true, direction = 'float', shell = 'pwsh' }
-function _Glow_toggle()
-  glow:toggle()
-end
-
-local debu = Terminal:new { cmd = 'just debug', hidden = true, direction = 'horizontal', shell = 'pwsh' }
-function _Debu_toggle()
-  debu:toggle()
-end
-
-local moni = Terminal:new { cmd = 'just monitor', hidden = true, direction = 'horizontal', shell = 'pwsh' }
-function _Moni_toggle()
-  moni:toggle()
-end
+map('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
+map('n', "<F3>", '<cmd>!just debug<CR>', { noremap = true, silent = true })
