@@ -27,6 +27,6 @@ return {
           lualine_y = { 'progress', { search_count, type = 'lua_expr' } },
         },
       }
-    end
-  }
+    end,
+  },
 }
