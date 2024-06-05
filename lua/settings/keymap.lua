@@ -7,19 +7,6 @@ local map = vim.api.nvim_set_keymap
 -- LSP
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
--- Debuging things
--- LSP saga
--- map('n', '<leader>cf', ':Lspsaga lsp_finder<CR>', { silent = true })
--- map('n', '<leader>ca', ':Lspsaga code_action<CR>', { silent = true })
--- map('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', { silent = true })
--- map('n', 'K', ':Lspsaga hover_doc<CR>', { silent = true })
--- map('n', '<leader>gs', ':Lspsaga signature_help<CR>', { silent = true })
--- -- map('n', '<leader>d', ':Lspsaga show_line_diagnostics<CR>', { noremap = true, silent = true })
--- map('n', ']d', ':Lspsaga diagnostic_jump_next<CR>zz', { silent = true })
--- map('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>zz', { silent = true })
--- map('n', '<leader>rn', ':Lspsaga rename<CR>', { silent = true })
--- map('n', '<leader>pd', ':Lspsaga preview_definition<CR>', { silent = true })
---
 -- Spell check
 
 map('n', '<F12>', ':set spell!<CR>', { silent = true })
@@ -38,6 +25,12 @@ vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
 
 -- for codeium
 vim.keymap.set('i', '<C-y>', function()
