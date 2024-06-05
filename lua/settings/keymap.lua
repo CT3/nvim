@@ -31,7 +31,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
-
 -- for codeium
 vim.keymap.set('i', '<C-y>', function()
   return vim.fn['codeium#Accept']()
@@ -46,7 +45,7 @@ map('n', '<C-u>', '<C-u>zz', { noremap = true })
 map('n', 'n', 'nzzzv', { noremap = true })
 map('n', 'N', 'Nzzzv', { noremap = true })
 map('n', 'J', "mzJ'z", { noremap = true })
-map('n', '<leader>ww', ':w <CR>:Format <CR>:w <CR>', { noremap = true, silent = true }) -- ctrl + s to save file
+map('n', '<leader>ww', ':w <CR>', { noremap = true, silent = true }) -- ctrl + s to save file
 map('n', '<leader><up>', ':m .-2<CR>==', { noremap = true })
 map('n', '<leader><down>', ':m .+1<CR>==', { noremap = true })
 map('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true })
@@ -81,4 +80,4 @@ map('n', '<leader>3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent
 require('leap').add_default_mappings()
 
 map('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
-map('n', "<F3>", '<cmd>!just debug<CR>', { noremap = true, silent = true })
+map('n', '<F3>', '<cmd>!just debug<CR>', { noremap = true, silent = true })

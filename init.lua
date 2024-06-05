@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
 require 'settings.config'
 require 'settings.keymap'
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
