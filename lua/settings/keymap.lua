@@ -24,12 +24,11 @@ vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- for codeium
 vim.keymap.set('i', '<C-y>', function()
@@ -55,15 +54,8 @@ map('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent
 -- Bufferlinke
 map('n', ']b', ':bnext<CR>', { noremap = true })
 map('n', '[b', ':bnext<CR>', { noremap = true })
-map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
 
--- Trouble
-map('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
-map('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', { silent = true, noremap = true })
-map('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { silent = true, noremap = true })
-map('n', '<leader>xl', '<cmd>Trouble loclist<cr>', { silent = true, noremap = true })
-map('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', { silent = true, noremap = true })
-map('n', '<leader>gr', '<cmd>Trouble lsp_references<cr>', { silent = true, noremap = true })
+map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
 
 --utilities
 map('n', '<Esc>', ':noh<CR><esc>', { silent = true, noremap = true })
