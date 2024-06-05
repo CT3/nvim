@@ -57,16 +57,14 @@ map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
 --utilities
 map('n', '<Esc>', ':noh<CR><esc>', { silent = true, noremap = true })
 map('v', 'p', '"_dP', { noremap = true })
-
+map('n', '<leader>rp', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { noremap = true })
 -- harpoon son
 map('n', '<leader>ha', "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, noremap = true })
 map('n', '<leader>hm', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { silent = true, noremap = true })
 map('n', '<leader>1', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { silent = true, noremap = true })
 map('n', '<leader>2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent = true, noremap = true })
 map('n', '<leader>3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, noremap = true })
-
 -- Terminal
-require('leap').add_default_mappings()
 
 map('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
 map('n', '<F3>', '<cmd>!just debug<CR>', { noremap = true, silent = true })
