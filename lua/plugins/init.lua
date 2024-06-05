@@ -1,4 +1,9 @@
 return {
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter',
+  },
+
   { 'rcarriga/nvim-notify' },
   { 'ggandor/leap.nvim' },
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },

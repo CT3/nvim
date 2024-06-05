@@ -4,9 +4,6 @@ local map = vim.api.nvim_set_keymap
 -- Remaps --
 ------------
 --
--- LSP
-map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-
 -- Spell check
 
 map('n', '<F12>', ':set spell!<CR>', { silent = true })
