@@ -17,6 +17,7 @@ return {
 
                     -- You can also define your own configuration
                     function()
+local util = require "formatter.util"
                         -- Supports conditional formatting
                         if util.get_current_buffer_file_name() == "special.lua" then
                             return nil
