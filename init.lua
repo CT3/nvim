@@ -18,6 +18,9 @@ require('lazy').setup 'plugins'
 require 'settings.config'
 require 'settings.keymap'
 
+require('mini.notify').setup()
+require('mini.comment').setup()
+require('mini.starter').setup()
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -27,4 +30,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
-})
+ })

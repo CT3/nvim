@@ -32,6 +32,6 @@ opt.signcolumn = "yes"
 opt.colorcolumn = "120"
 opt.foldmethod = "expr"
 opt.updatetime = 50
-vim.notify = require("notify")
+-- vim.notify = require("notify")
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
