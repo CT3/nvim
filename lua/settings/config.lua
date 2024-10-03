@@ -2,7 +2,6 @@
 -- Lua config for neovim --
 ---------------------------
 local opt = vim.opt -- to set options
-
 ---------------------------------------
 -- Global Look and feel (and colour) --
 ---------------------------------------
@@ -35,3 +34,5 @@ opt.updatetime = 50
 -- vim.notify = require("notify")
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
+
+

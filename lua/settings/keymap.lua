@@ -1,31 +1,61 @@
-local map = vim.api.nvim_set_keymap
-
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 ------------
 -- Remaps --
 ------------
---
--- Spell check
 
-map('n', '<F12>', ':set spell!<CR>', { silent = true })
-map('n', '<leader>sp', 'w[s1z=', { silent = true })
-
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+--spell check
+vim.keymap.set('n', '<F12>', ':set spell!<CR>', { silent = true }, { desc = 'Run spell check' })
+vim.keymap.set('n', '<leader>sp', 'w[s1z=', { silent = true }, { desc = 'Spell check' })
+vim.keymap.set('n', '<leader>fs', require('telescope.builtin').spell_suggest, { desc = 'Find Spell Suggestions' })
 
 -- Telescope
 vim.keymap.set('n', '<leader>fp', require('telescope').extensions.projects.projects, { noremap = true })
-vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Find Buffers' })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Find Help' })
+vim.keymap.set('n', '<leader>fy', require('telescope.builtin').registers, { desc = 'Find Registers' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').lsp_definitions, { desc = 'Find Definitions' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find Word' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find with Grep' })
+vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = 'Find Diagnostics' })
+vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references, { desc = 'Find References' })
+vim.keymap.set('n', '<leader>fk', require('telescope.builtin').keymaps, { desc = 'Find Keymaps' })
+vim.keymap.set('n', '<leader>fo', ':lua MiniFiles.open()<CR>', { desc = 'File Open' })
+
+vim.keymap.set('n', '<leader>xc', require('telescope.builtin').colorscheme, { desc = 'Find Definitions' })
+-- Diagnostic key ma
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Next diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Prev diagnostic' })
+
+-- Misc
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true }, { desc = 'center' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true }, { desc = 'center' })
+vim.keymap.set('n', 'n', 'nzzzv', { noremap = true }, { desc = 'center' })
+vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true }, { desc = 'center' })
+vim.keymap.set('n', 'J', "mzJ'z", { noremap = true }, { desc = 'center' })
+vim.keymap.set('n', '<leader>ww', ':w <CR>', { noremap = true, silent = true }, { desc = 'Save File' })
+vim.keymap.set('n', '<leader><up>', ':m .-2<CR>==', { noremap = true }, { desc = 'Move line' })
+vim.keymap.set('n', '<leader><down>', ':m .+1<CR>==', { noremap = true }, { desc = 'Move line' })
+vim.keymap.set('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true }, { desc = 'Move line' })
+vim.keymap.set('v', '<leader><up>', ":m '<-2<CR>gv=gv", { noremap = true }, { desc = 'Move line' })
+vim.keymap.set('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true }, { desc = 'Switch C/C++ header' })
+
+vim.keymap.set('n', '<leader>y', '"+y', { noremap = true }, { desc = 'Yank' })
+
+-- Bufferlinke
+vim.keymap.set('n', ']b', ':bnext<CR>', { noremap = true }, { desc = 'Next Buffer' })
+vim.keymap.set('n', '[b', ':bnext<CR>', { noremap = true }, { desc = 'Prev Buffer' })
+vim.keymap.set('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true }, { desc = 'Quit Buffer' })
+
+--utilities
+vim.keymap.set('n', '<Esc>', ':noh<CR><esc>', { silent = true, noremap = true }, { desc = 'Escape' })
+vim.keymap.set('v', 'p', '"_dP', { noremap = true }, { desc = 'Paste' })
+vim.keymap.set('n', '<leader>rp', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { noremap = true }, { desc = 'Replace' })
+
+-- Terminal
+
+vim.keymap.set('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F3>', '<cmd>!zellij run -- just debug<CR>', { noremap = true, silent = true })
 
 -- for codeium
 vim.keymap.set('i', '<C-y>', function()
@@ -34,37 +64,3 @@ end, { expr = true })
 vim.keymap.set('i', '<c-x>', function()
   return vim.fn['codeium#Clear']()
 end, { expr = true })
-
--- Misc
-map('n', '<C-d>', '<C-d>zz', { noremap = true })
-map('n', '<C-u>', '<C-u>zz', { noremap = true })
-map('n', 'n', 'nzzzv', { noremap = true })
-map('n', 'N', 'Nzzzv', { noremap = true })
-map('n', 'J', "mzJ'z", { noremap = true })
-map('n', '<leader>ww', ':w <CR>', { noremap = true, silent = true }) -- ctrl + s to save file
-map('n', '<leader><up>', ':m .-2<CR>==', { noremap = true })
-map('n', '<leader><down>', ':m .+1<CR>==', { noremap = true })
-map('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true })
-map('v', '<leader><up>', ":m '<-2<CR>gv=gv", { noremap = true })
-map('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
-
--- Bufferlinke
-map('n', ']b', ':bnext<CR>', { noremap = true })
-map('n', '[b', ':bnext<CR>', { noremap = true })
-
-map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
-
---utilities
-map('n', '<Esc>', ':noh<CR><esc>', { silent = true, noremap = true })
-map('v', 'p', '"_dP', { noremap = true })
-map('n', '<leader>rp', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { noremap = true })
--- harpoon son
-map('n', '<leader>ha', "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, noremap = true })
-map('n', '<leader>hm', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { silent = true, noremap = true })
-map('n', '<leader>1', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { silent = true, noremap = true })
-map('n', '<leader>2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent = true, noremap = true })
-map('n', '<leader>3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, noremap = true })
--- Terminal
-
-map('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
-map('n', '<F3>', '<cmd>!just debug<CR>', { noremap = true, silent = true })
