@@ -18,6 +18,7 @@ require('lazy').setup 'plugins'
 require 'settings.config'
 require 'settings.keymap'
 
+
 -- Mini plugins
 require('mini.notify').setup()
 require('mini.statusline').setup()
@@ -48,10 +49,7 @@ require('mini.base16').setup {
     base0F = '#bd6f3e',
   },
 }
--- require('mini.completion').setup()
-require('mini.hipatterns').setup()
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
+
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -61,6 +59,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+require('mini.hipatterns').setup()
 local hipatterns = require 'mini.hipatterns'
 hipatterns.setup {
   highlighters = {
@@ -77,22 +76,23 @@ hipatterns.setup {
 
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
-local lspconfig = require 'lspconfig'
-lspconfig.arduino_language_server.setup {
-  cmd = {
-    'arduino-language-server',
-    '-cli-config',
-    '~/.arduino15/arduino-cli.yaml',
-    '-fqbn',
-    'esp32:esp32:XIAO_ESP32C3',
-    '-clangd',
-    'clangd',
-  },
-  filetypes = { 'arduino' },
-  root_dir = function(fname)
-    return lspconfig.util.root_pattern 'sketch.ino'(fname) or lspconfig.util.root_pattern '.git'(fname) or lspconfig.util.path.dirname(fname)
-  end,
-  on_attach = function(client, bufnr)
-    -- You can customize key mappings and more here
-  end,
+
+local lspconfig = require'lspconfig'
+
+lspconfig.arduino_language_server.setup{
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "~/.arduino15/arduino-cli.yaml",
+        "-fqbn", "esp32:esp32:xiao_esp32c3",
+        "-clangd", "clangd"
+    },
+    filetypes = { "arduino" },
+     root_dir = function(fname)
+        return lspconfig.util.root_pattern("sketch.ino")(fname) or
+               lspconfig.util.root_pattern(".git")(fname) or
+               lspconfig.util.path.dirname(fname)
+    end, 
+    on_attach = function(client, bufnr)
+        -- You can customize key mappings and more here
+    end
 }
