@@ -13,14 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-
 require('lazy').setup 'plugins'
 require 'settings.config'
 require 'settings.keymap'
 
-
--- Mini plugins
 require('mini.notify').setup()
+-- Mini plugins
 require('mini.statusline').setup()
 require('mini.comment').setup()
 require('mini.starter').setup()
@@ -30,6 +28,7 @@ require('mini.indentscope').setup()
 require('mini.pairs').setup()
 require('mini.ai').setup()
 require('mini.base16').setup {
+  scheme = 'gruvbox-dark-medium',
   palette = {
     base00 = '#32302f',
     base01 = '#32302f',
@@ -76,23 +75,22 @@ hipatterns.setup {
 
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
+local lspconfig = require('lspconfig')
 
-local lspconfig = require'lspconfig'
-
-lspconfig.arduino_language_server.setup{
-    cmd = {
-        "arduino-language-server",
-        "-cli-config", "~/.arduino15/arduino-cli.yaml",
-        "-fqbn", "esp32:esp32:xiao_esp32c3",
-        "-clangd", "clangd"
-    },
-    filetypes = { "arduino" },
-     root_dir = function(fname)
-        return lspconfig.util.root_pattern("sketch.ino")(fname) or
-               lspconfig.util.root_pattern(".git")(fname) or
-               lspconfig.util.path.dirname(fname)
-    end, 
-    on_attach = function(client, bufnr)
-        -- You can customize key mappings and more here
-    end
+lspconfig.arduino_language_server.setup {
+  cmd = {
+    "arduino-language-server",
+    "-cli-config", "~/.arduino15/arduino-cli.yaml", -- Path to your arduino-cli configuration file
+    "-cli", "arduino-cli",
+    "-fqbn", "arduino:avr:uno",                      -- Fully Qualified Board Name; replace "arduino:avr:uno" as needed
+    "-clangd", "clangd"                              -- Path to clangd
+  },
+  on_attach = function(client, bufnr)
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  end,
+  flags = {
+    debounce_text_changes = 150,
+  }
 }
+

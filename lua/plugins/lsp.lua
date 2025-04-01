@@ -155,124 +155,52 @@ return {
       })
     end,
   },
-
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip' },
-    config = function()
-      -- Setup neovim lua configuration
-      --
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-      ---
-      -- Autocomplete
-      ---
-      -- require('luasnip.loaders.from_vscode').lazy_load()
-      local function border(hl_name)
-        return {
-          { '╭', hl_name },
-          { '─', hl_name },
-          { '╮', hl_name },
-          { '│', hl_name },
-          { '╯', hl_name },
-          { '─', hl_name },
-          { '╰', hl_name },
-          { '│', hl_name },
-        }
-      end
-      local cmp = require 'cmp'
-      local source_mapping = {
-        luasnip = '',
-        cmp_tabnine = '',
-        nvim_lsp = '',
-        buffer = '﬘',
-        path = '',
-      }
-      local lspkind = require 'lspkind'
-      local select_opts = { behavior = cmp.SelectBehavior.Select }
-      -- local luasnip = require 'luasnip'
-      cmp.setup {
-        snippet = {
-          -- REQUIRED - you must specify a snippet engine
-          expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-          end,
-        },
-        sources = {
-          { name = 'path' },
-          { name = 'nvim_lsp', keyword_length = 1 },
-          { name = 'buffer', keyword_length = 3 },
-          -- { name = "vsnip" }, -- For vsnip users.
-          { name = 'luasnip', keyword_length = 2 },
-        },
-        window = {
-          completion = {
-            border = border 'CmpBorder',
-            winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
-          },
-          documentation = {
-            border = border 'CmpDocBorder',
-          },
-        },
-        formatting = {
-          format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            if entry.source.name == 'cmp_tabnine' then
-              if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                menu = entry.completion_item.data.detail .. ' ' .. menu
-              end
-              vim_item.kind = ''
-            end
-            vim_item.menu = menu
-            return vim_item
-          end,
-        },
-        mapping = {
-          ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-          ['<Down>'] = cmp.mapping.select_next_item(select_opts),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm { select = false },
-          ['<C-n>'] = cmp.mapping(function(fallback)
-            if luasnip.jumpable(1) then
-              luasnip.jump(1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<C-p>'] = cmp.mapping(function(fallback)
-            if luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            local col = vim.fn.col '.' - 1
+    'saghen/blink.cmp',
+    lazy = false, -- lazy loading handled internally
+    -- optional: provides snippets for the snippet source
+    dependencies = 'rafamadriz/friendly-snippets',
 
-            if cmp.visible() then
-              cmp.select_next_item(select_opts)
-            elseif col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' then
-              fallback()
-            else
-              cmp.complete()
-            end
-          end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item(select_opts)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-        },
-      }
-    end,
+    -- use a release tag to download pre-built binaries
+    version = 'v0.*',
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' for mappings similar to built-in completion
+      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      -- see the "default configuration" section below for full documentation on how to define
+      -- your own keymap.
+      keymap = { preset = 'default', ['<Up>'] = { 'select_prev', 'fallback' }, ['<Down>'] = { 'select_next', 'fallback' }
+ },
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release
+        use_nvim_cmp_as_default = true,
+        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono',
+      },
+
+      -- default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, via `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        -- optionally disable cmdline completions
+        -- cmdline = {},
+      },
+
+      -- experimental signature help support
+      signature = { enabled = true },
+    },
+    -- allows extending the providers array elsewhere in your config
+    -- without having to redefine it
+    opts_extend = { 'sources.default' },
   },
 }

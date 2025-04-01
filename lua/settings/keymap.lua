@@ -2,7 +2,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 ------------
 -- Remaps --
 ------------
-
 --spell check
 vim.keymap.set('n', '<F12>', ':set spell!<CR>', { silent = true }, { desc = 'Run spell check' })
 vim.keymap.set('n', '<leader>sp', 'w[s1z=', { silent = true }, { desc = 'Spell check' })
@@ -57,10 +56,3 @@ vim.keymap.set('n', '<leader>rp', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 vim.keymap.set('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F3>', '<cmd>!zellij run -- just debug<CR>', { noremap = true, silent = true })
 
--- for codeium
-vim.keymap.set('i', '<C-y>', function()
-  return vim.fn['codeium#Accept']()
-end, { expr = true })
-vim.keymap.set('i', '<c-x>', function()
-  return vim.fn['codeium#Clear']()
-end, { expr = true })
