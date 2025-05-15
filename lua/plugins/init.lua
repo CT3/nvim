@@ -22,7 +22,7 @@ return {
         additions = {
           { 'Foo', 'Bar' },
           { 'tic', 'tac', 'toe' },
-          {'HIGH', 'LOW'},
+          { 'HIGH', 'LOW' },
         },
         allow_caps_additions = {
           { 'enable', 'disable' },
@@ -32,6 +32,28 @@ return {
         },
       }
     end,
+  },
+  {
+
+    'kyazdani42/nvim-web-devicons',
+  },
+
+
+  {
+    'meinside/gmn.nvim', config = function()
+      require'gmn'.setup {
+        -- (default values)
+        configFilepath = '~/.config/gmn.nvim/config.json',
+        timeout = 30 * 1000,
+        model = 'gemini-2.5-flash-preview-04-17',
+        safetyThreshold = 'BLOCK_ONLY_HIGH',
+        stripOutermostCodeblock = function()
+          return vim.bo.filetype ~= 'markdown'
+        end,
+        verbose = false,
+      }
+    end,
+    dependencies = { { 'nvim-lua/plenary.nvim' } },
   },
   -- {
   --   'eddyekofo94/gruvbox-flat.nvim',

@@ -1,10 +1,13 @@
 return {
+
+  { 'mason-org/mason-lspconfig.nvim' },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
       'L3MON4D3/LuaSnip',
+
       {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         config = function()
           local servers = {
             clangd = {},
@@ -16,7 +19,6 @@ return {
           }
           -- Setup mason so it can manage external tooling
           require('mason').setup()
-
           -- Ensure the servers above are installed
           local mason_lspconfig = require 'mason-lspconfig'
 
@@ -24,18 +26,17 @@ return {
             ensure_installed = vim.tbl_keys(servers),
           }
 
-          mason_lspconfig.setup_handlers {
-            function(server_name)
-              require('lspconfig')[server_name].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = servers[server_name],
-              }
-            end,
-          }
+          -- mason_lspconfig.setup_handlers {
+          --   function(server_name)
+          --     require('lspconfig')[server_name].setup {
+          --       capabilities = capabilities,
+          --       on_attach = on_attach,
+          --       settings = servers[server_name],
+          --     }
+          --   end,
+          -- }
         end,
       },
-      { 'williamboman/mason-lspconfig.nvim' },
       -- Useful status updates for LSP
       {
         'j-hui/fidget.nvim',
@@ -176,8 +177,7 @@ return {
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
       -- see the "default configuration" section below for full documentation on how to define
       -- your own keymap.
-      keymap = { preset = 'default', ['<Up>'] = { 'select_prev', 'fallback' }, ['<Down>'] = { 'select_next', 'fallback' }
- },
+      keymap = { preset = 'default', ['<Up>'] = { 'select_prev', 'fallback' }, ['<Down>'] = { 'select_next', 'fallback' } },
       appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
         -- Useful for when your theme doesn't support blink.cmp

@@ -3,7 +3,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remaps --
 ------------
 --spell check
-vim.keymap.set('n', '<F12>', ':set spell!<CR>', { silent = true }, { desc = 'Run spell check' })
+vim.keymap.set('n', '<F9>', ':set spell!<CR>', { silent = true }, { desc = 'Run spell check' })
 vim.keymap.set('n', '<leader>sp', 'w[s1z=', { silent = true }, { desc = 'Spell check' })
 vim.keymap.set('n', '<leader>fs', require('telescope.builtin').spell_suggest, { desc = 'Find Spell Suggestions' })
 
@@ -21,6 +21,12 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references, {
 vim.keymap.set('n', '<leader>fk', require('telescope.builtin').keymaps, { desc = 'Find Keymaps' })
 vim.keymap.set('n', '<leader>fo', ':lua MiniFiles.open()<CR>', { desc = 'File Open' })
 
+
+
+vim.keymap.set('n', '<leader>ai', ':PiecesCopilot<CR>', { desc = 'File Open' })
+
+
+
 vim.keymap.set('n', '<leader>xc', require('telescope.builtin').colorscheme, { desc = 'Find Definitions' })
 -- Diagnostic key ma
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Next diagnostic' })
@@ -37,7 +43,7 @@ vim.keymap.set('n', '<leader><up>', ':m .-2<CR>==', { noremap = true }, { desc =
 vim.keymap.set('n', '<leader><down>', ':m .+1<CR>==', { noremap = true }, { desc = 'Move line' })
 vim.keymap.set('v', '<leader><down>', ":m '>+1<CR>gv=gv", { noremap = true }, { desc = 'Move line' })
 vim.keymap.set('v', '<leader><up>', ":m '<-2<CR>gv=gv", { noremap = true }, { desc = 'Move line' })
-vim.keymap.set('n', '<leader>gh', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true }, { desc = 'Switch C/C++ header' })
+vim.keymap.set('n', '<leader>gh', ':LspClangdSwitchSourceHeader<CR>', { noremap = true, silent = true }, { desc = 'Switch C/C++ header' })
 
 vim.keymap.set('n', '<leader>y', '"+y', { noremap = true }, { desc = 'Yank' })
 
@@ -56,3 +62,7 @@ vim.keymap.set('n', '<leader>rp', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 vim.keymap.set('n', '<F4>', '<cmd>!zellij run -- just<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F3>', '<cmd>!zellij run -- just debug<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>di', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config { virtual_lines = new_config }
+end, { desc = 'Toggle diagnostic virtual_lines' })
