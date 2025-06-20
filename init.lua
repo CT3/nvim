@@ -75,22 +75,27 @@ hipatterns.setup {
 
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
-local lspconfig = require('lspconfig')
+local lspconfig = require 'lspconfig'
 
 lspconfig.arduino_language_server.setup {
   cmd = {
-    "arduino-language-server",
-    "-cli-config", "~/.arduino15/arduino-cli.yaml", -- Path to your arduino-cli configuration file
-    "-cli", "arduino-cli",
-    "-fqbn", "arduino:avr:uno",                      -- Fully Qualified Board Name; replace "arduino:avr:uno" as needed
-    "-clangd", "clangd"                              -- Path to clangd
+    'arduino-language-server',
+    '-cli-config',
+    '~/.arduino15/arduino-cli.yaml', -- Path to your arduino-cli configuration file
+    '-cli',
+    'arduino-cli',
+    '-fqbn',
+    'arduino:avr:uno', -- Fully Qualified Board Name; replace "arduino:avr:uno" as needed
+    '-clangd',
+    'clangd', -- Path to clangd
   },
   on_attach = function(client, bufnr)
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    local function buf_set_option(...)
+      vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   end,
   flags = {
     debounce_text_changes = 150,
-  }
+  },
 }
-

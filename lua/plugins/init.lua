@@ -37,38 +37,21 @@ return {
 
     'kyazdani42/nvim-web-devicons',
   },
-
-
-  {
-    'meinside/gmn.nvim', config = function()
-      require'gmn'.setup {
-        -- (default values)
-        configFilepath = '~/.config/gmn.nvim/config.json',
-        timeout = 30 * 1000,
-        model = 'gemini-2.5-flash-preview-04-17',
-        safetyThreshold = 'BLOCK_ONLY_HIGH',
-        stripOutermostCodeblock = function()
-          return vim.bo.filetype ~= 'markdown'
-        end,
-        verbose = false,
-      }
-    end,
-    dependencies = { { 'nvim-lua/plenary.nvim' } },
-  },
+  
   -- {
-  --   'eddyekofo94/gruvbox-flat.nvim',
-  --   priority = 1000,
-  --   enabled = true,
-  --   config = function()
-  --     vim.cmd [[colorscheme gruvbox-flat]]
-  --     vim.g.gruvbox_flat_style = 'dark'
+  --   'meinside/gmn.nvim', config = function()
+  --     require'gmn'.setup {
+  --       -- (default values)
+  --       configFilepath = '~/.config/gmn.nvim/config.json',
+  --       timeout = 30 * 1000,
+  --       model = 'gemini-2.5-flash-preview-04-17',
+  --       safetyThreshold = 'BLOCK_ONLY_HIGH',
+  --       stripOutermostCodeblock = function()
+  --         return vim.bo.filetype ~= 'markdown'
+  --       end,
+  --       verbose = false,
+  --     }
   --   end,
+  --   dependencies = { { 'nvim-lua/plenary.nvim' } },
   -- },
-  -- -- {
-  --   'numToStr/Comment.nvim',
-  --   config = function()
-  --     require('Comment').setup()
-  --   end,
-
-  -- Lua
 }

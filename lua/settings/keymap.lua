@@ -17,20 +17,22 @@ vim.keymap.set('n', '<leader>fd', require('telescope.builtin').lsp_definitions, 
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find Word' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find with Grep' })
 vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = 'Find Diagnostics' })
+vim.keymap.set('n', '<leader>fx', require('telescope.builtin').quickfix, { desc = 'Find Diagnostics' })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references, { desc = 'Find References' })
 vim.keymap.set('n', '<leader>fk', require('telescope.builtin').keymaps, { desc = 'Find Keymaps' })
+vim.keymap.set('n', '<leader>fm', require('telescope.builtin').marks, { desc = 'Find Marks' })
 vim.keymap.set('n', '<leader>fo', ':lua MiniFiles.open()<CR>', { desc = 'File Open' })
 
-
-
-vim.keymap.set('n', '<leader>ai', ':PiecesCopilot<CR>', { desc = 'File Open' })
-
-
-
-vim.keymap.set('n', '<leader>xc', require('telescope.builtin').colorscheme, { desc = 'Find Definitions' })
--- Diagnostic key ma
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Next diagnostic' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Prev diagnostic' })
+-- CHATBOT
+vim.keymap.set('n', '<leader>ai', ':PrtChatNew<CR>', { desc = 'File Open' })
+vim.keymap.set('n', '<leader>aii', ':PrtChatRespond<CR>', { desc = 'File Open' })
+vim.keymap.set('n', '<leader>ax', ':PrtChatDelete<CR>', { desc = 'File Open' })
+-- Set up a keymap for PrtImplement in visual mode
+vim.keymap.set('v', '<leader>ai', ':<C-u>PrtImplement<CR>', {
+  noremap = true,
+  silent = false,
+  desc = 'Parrot: Implement code from visual selection',
+})
 
 -- Misc
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true }, { desc = 'center' })
@@ -47,11 +49,10 @@ vim.keymap.set('n', '<leader>gh', ':LspClangdSwitchSourceHeader<CR>', { noremap 
 
 vim.keymap.set('n', '<leader>y', '"+y', { noremap = true }, { desc = 'Yank' })
 
--- Bufferlinke
+-- Buffer link
 vim.keymap.set('n', ']b', ':bnext<CR>', { noremap = true }, { desc = 'Next Buffer' })
 vim.keymap.set('n', '[b', ':bnext<CR>', { noremap = true }, { desc = 'Prev Buffer' })
 vim.keymap.set('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true }, { desc = 'Quit Buffer' })
-
 --utilities
 vim.keymap.set('n', '<Esc>', ':noh<CR><esc>', { silent = true, noremap = true }, { desc = 'Escape' })
 vim.keymap.set('v', 'p', '"_dP', { noremap = true }, { desc = 'Paste' })
