@@ -2,7 +2,7 @@ vim.g.mapleader = ' ' -- make sure to set `mapleader` before lazy so your mappin
 vim.g.maplocalleader = ' '
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system {
     'git',
     'clone',
@@ -75,27 +75,27 @@ hipatterns.setup {
 
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
-local lspconfig = require 'lspconfig'
-
-lspconfig.arduino_language_server.setup {
-  cmd = {
-    'arduino-language-server',
-    '-cli-config',
-    '~/.arduino15/arduino-cli.yaml', -- Path to your arduino-cli configuration file
-    '-cli',
-    'arduino-cli',
-    '-fqbn',
-    'arduino:avr:uno', -- Fully Qualified Board Name; replace "arduino:avr:uno" as needed
-    '-clangd',
-    'clangd', -- Path to clangd
-  },
-  on_attach = function(client, bufnr)
-    local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-    end
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'arduino',
+  callback = function()
+    local root_dir = vim.fs.dirname(vim.fs.find({ 'sketch.yaml', 'libraries', '*.ino' }, { upward = true })[1]) or vim.fn.getcwd()
+    vim.lsp.start {
+      name = 'arduino-language-server',
+      cmd = {
+        'arduino-language-server',
+        '-cli-config',
+        vim.fn.expand '~/.arduino15/arduino-cli.yaml',
+        '-cli',
+        'arduino-cli',
+        '-fqbn',
+        'arduino:avr:uno',
+        '-clangd',
+        'clangd',
+      },
+      root_dir = root_dir,
+      on_attach = function(client, bufnr)
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      end,
+    }
   end,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
+})

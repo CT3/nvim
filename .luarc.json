@@ -1,42 +1,41 @@
 {
-    "workspace.library": [
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\neodev.nvim\\types\\stable",
-        "C:\\Users\\manta\\scoop\\apps\\neovim\\0.8.3\\share\\nvim\\runtime\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\lualine.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\plenary.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\telescope-fzf-native.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\mason.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\lazy.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\indent-blankline.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\cmp-nvim-lsp\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\mason-lspconfig.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\neodev.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\gruvbox-flat.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\cmp-tabnine\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\Comment.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\LuaSnip\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\fidget.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\telescope-file-browser.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\project.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\nvim-notify\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\gitsigns.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\nvim-cmp\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\leap.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\cmp_luasnip\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\nvim-treesitter\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\lspkind.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\onedark.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\telescope.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\nvim-lspconfig\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim-data\\lazy\\toggleterm.nvim\\lua",
-        "C:\\Users\\manta\\AppData\\Local\\nvim/lua",
-        "${3rd}/luv/library",
-        "${3rd}/luv/library"
-    ],
-    "diagnostics.globals": [
-        "vim"
-    ],
-    "diagnostics.disable": [
-        "undefined-global"
-    ]
+  "workspace.library": [
+    "/usr/share/nvim/runtime/lua",
+    "${3rd}/luv/library",
+    "/home/mantas/.local/share/nvim/lazy/lazy.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/LuaSnip/lua",
+    "/home/mantas/.local/share/nvim/lazy/blink.cmp/lua",
+    "/home/mantas/.local/share/nvim/lazy/boole.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/conform.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/fidget.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/gitsigns.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/leap.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/lspkind.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/mason.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/mini.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/neodev.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-dap/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-dap-ui/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-lspconfig/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-nio/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-treesitter/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-treesitter-textobjects/lua",
+    "/home/mantas/.local/share/nvim/lazy/nvim-web-devicons/lua",
+    "/home/mantas/.local/share/nvim/lazy/plenary.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/project.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/render-markdown.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/telescope-file-browser.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/telescope-fzf-native.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/telescope.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/fzf-lua/lua",
+    "/home/mantas/.local/share/nvim/lazy/parrot.nvim/lua",
+    "/home/mantas/.local/share/nvim/lazy/blame.nvim/lua"
+  ],
+  "diagnostics.globals": [
+    "vim"
+  ],
+  "diagnostics.disable": [
+    "undefined-global"
+  ]
 }

@@ -9,8 +9,16 @@ return {
           delete = { text = '_' },
           topdelete = { text = '‾' },
           changedelete = { text = '~' },
+        },
       }
-  }
+    end,
+  },
+
+  {
+    'FabijanZulj/blame.nvim',
+    lazy = false,
+    config = function()
+      require('blame').setup {}
     end,
   },
 }
