@@ -18,7 +18,6 @@ return {
           increment = '<C-a>',
           decrement = '<C-x>',
         },
-        -- User defined loops
         additions = {
           { 'Foo', 'Bar' },
           { 'tic', 'tac', 'toe' },
@@ -26,32 +25,52 @@ return {
         },
         allow_caps_additions = {
           { 'enable', 'disable' },
-          -- enable → disable
-          -- Enable → Disable
-          -- ENABLE → DISABLE
         },
       }
     end,
   },
-  {
 
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+    },
+  },
+
+  {
+    'ThePrimeagen/99',
+    config = function()
+      local _99 = require("99")
+      local cwd = vim.uv.cwd()
+      local basename = vim.fs.basename(cwd)
+      _99.setup({
+        logger = {
+          level = _99.DEBUG,
+          path = "/tmp/" .. basename .. ".99.debug",
+          print_on_error = true,
+        },
+        completion = {
+          custom_rules = {},
+          files = {},
+          source = "cmp",
+        },
+        md_files = {
+          "AGENT.md",
+        },
+      })
+
+      vim.keymap.set("v", "<leader>9v", function()
+        _99.visual()
+      end)
+
+      vim.keymap.set("v", "<leader>9s", function()
+        _99.stop_all_requests()
+      end)
+    end,
+  },
+
+  {
     'kyazdani42/nvim-web-devicons',
   },
-  
-  -- {
-  --   'meinside/gmn.nvim', config = function()
-  --     require'gmn'.setup {
-  --       -- (default values)
-  --       configFilepath = '~/.config/gmn.nvim/config.json',
-  --       timeout = 30 * 1000,
-  --       model = 'gemini-2.5-flash-preview-04-17',
-  --       safetyThreshold = 'BLOCK_ONLY_HIGH',
-  --       stripOutermostCodeblock = function()
-  --         return vim.bo.filetype ~= 'markdown'
-  --       end,
-  --       verbose = false,
-  --     }
-  --   end,
-  --   dependencies = { { 'nvim-lua/plenary.nvim' } },
-  -- },
 }
