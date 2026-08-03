@@ -18,12 +18,12 @@ require 'settings.cmp'
 require 'settings.config'
 require 'settings.keymap'
 
---  See `:help vim.highlight.on_yank()`
+--  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -47,9 +47,7 @@ vim.api.nvim_create_autocmd('FileType', {
         'clangd',
       },
       root_dir = root_dir,
-      on_attach = function(client, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      end,
+      -- ponytail: dropped on_attach, nvim sets omnifunc itself on LSP attach
     }
   end,
 })
